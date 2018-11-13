@@ -8,14 +8,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<activity android:name="com.branjoe.cashq.SettingActivity"/>-->
-        <activity android:name="com.branjoe.cashq.LockScreenActivity">
+        <activity
+            android:name="com.branjoe.cashq.LockScreenActivity"
+            android:launchMode="singleTask" />
+        <activity android:name="com.branjoe.cashq.SettingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".scale.ScaleLayoutActivity" />
+        <activity android:name=".scale.ScaleLayoutActivity"
+            android:launchMode="singleTask"
+            android:showOnLockScreen="true"/>
+        <service android:name=".service.ScreenService" />
+        <receiver
+            android:name=".service.RestartReceiver"
+            android:process=".remote">
+            <intent-filter>
+                <action android:name="RestartReceiver.restart" />
+            </intent-filter>
+        </receiver>
     </application>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 </manifest>

@@ -1,10 +1,13 @@
 package com.branjoe.cashq;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.branjoe.cashq.service.ScreenService;
 
 public class SettingActivity extends Activity {
     private Button onBtn, offBtn;
@@ -20,8 +23,8 @@ public class SettingActivity extends Activity {
         onBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(SettingActivity.this, ScreenService.class);
-//                startService(intent);
+                Intent intent = new Intent(SettingActivity.this, ScreenService.class);
+                startService(intent);
                 Toast.makeText(SettingActivity.this,"Start Service",Toast.LENGTH_SHORT).show();
             }
         });
@@ -29,8 +32,8 @@ public class SettingActivity extends Activity {
         offBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(SettingActivity.this, ScreenService.class);
-//                stopService(intent);
+                Intent intent = new Intent(SettingActivity.this, ScreenService.class);
+                stopService(intent);
             }
         });
     }
